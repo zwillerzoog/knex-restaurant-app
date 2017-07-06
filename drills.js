@@ -164,10 +164,24 @@ process.stdout.write('\033c');
 
 // able to delete without error :/
 
-// Adding Knex to the endpoints
+// Manual Hydrate
 
-
-
+const hydrated = {};
+restaurants.forEach(row => {
+    if ( !(row.id in hydrated) ) {
+        hydrated[row.id] = {
+            name: row.name,
+            cuisine: row.cuisine,
+            borough: row.borough,
+            grades: []
+        }
+    }
+    hydrated[row.id].grades.push({
+        name: row.gradeName,
+        type: row.score,
+    });
+});
+console.log(hydrated);
 
 
 
