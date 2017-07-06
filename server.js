@@ -40,7 +40,6 @@ app.get('/restaurants/:id', (req, res) => {
 
 
 
-
 });
 
 app.listen(PORT);
