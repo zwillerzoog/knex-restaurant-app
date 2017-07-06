@@ -2,36 +2,46 @@ const knex = require('knex')({
   client: 'pg',
   connection: {
     //database: 'dev-restaurants-app'
-    database: 'nyc-restaurants-data-backup'
+    database: 'dev-restaurants-app'
   },
 });
+
 const { DATABASE, PORT } = require('./config');
 // const knex = require('knex')({
 //   client: 'pg',
 //   connection: '	postgres://tdqonxzs:cAAs-TOvQBFiExdgFaZRKQJiCXF1o2QC@stampy.db.elephantsql.com:5432/tdqonxzs'
 // });
 
-
 // clear the console before each run
 process.stdout.write('\033c');
-console.log('hello');
 
 //1. Get All Restaurants
-
 knex.select()
   .table('restaurants')
-  .then(results => console.log(results));
+  .limit(4)
+  .then(results => console.log('Get All Restaurants w/ limit 4: ', results));
 
+// 2. Get Italian restaurants
+knex.select()
+  .from('restaurants')
+  .where('cuisine', 'Italian')
+  .limit(4)
+  .then(results => console.log('Get Italian restaurants /w limit 4: ', results));
 
+// 3. Get 10 Italian restaurants, subset of fields
+knex.select('id', 'name')
+  .from('restaurants')
+  .where('cuisine', 'Italian')
+  .limit(10)
+  .then(results => console.log('Get 10 Italian restaurants, subset of fields: ', results));
 
+// 4. Count of Thai restaurants
+knex.count('id')
+  .from('restaurants')
+  .where('cuisine', 'Thai')
+  .then(results => console.log('Count of Thai restaurants: ', results));
 
-
-
-
-
-
-
-
+// 5. Count of restaurants
 
 
 
