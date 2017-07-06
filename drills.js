@@ -8,7 +8,7 @@ const knex = require('knex')({
   },
 });
 
-//const { DATABASE, PORT } = require('./config');
+const { DATABASE, PORT } = require('./config');
 // const knex = require('knex')({
 //   client: 'pg',
 //   connection: '	postgres://tdqonxzs:cAAs-TOvQBFiExdgFaZRKQJiCXF1o2QC@stampy.db.elephantsql.com:5432/tdqonxzs'
@@ -144,7 +144,7 @@ process.stdout.write('\033c');
 //   .then(results => console.log('exist? ', results))
 
 
-// 12. Delete by id
+//12. Delete by id
 // knex
 //   .from('grades')
 //   .where('id', '22')

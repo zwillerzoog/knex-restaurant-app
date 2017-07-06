@@ -4,11 +4,11 @@ const DATABASE_URL = process.env.DATABASE_URL || global.DATABASE_URL || 'postgre
 
 // postgres://USERNAME:PASSWORD@stampy.db.elephantsql.com:5432/DATABASE
 
-// exports.DATABASE = {
-//   client: 'pg',
-//   connection: DATABASE_URL,
-//   // debug: true
-// };
+exports.DATABASE = {
+  client: 'pg',
+  connection: DATABASE_URL,
+  // debug: true
+};
 
 exports.PORT = process.env.PORT || 8080; 
 
